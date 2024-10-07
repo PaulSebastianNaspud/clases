@@ -226,7 +226,46 @@
         </defs>
       </svg>
       <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <p>Congratulations! Your app is running. 🎉</p><br>
+      <table border="1">
+        <tr>
+          <th>Codigo</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+        <tr *ngFor="let articulo of listProducts">
+          <td>{{articulo.code}}</td>
+          <td>{{articulo.description}}</td>
+          <td>{{articulo.price}}</td>
+          <td>
+            <button (click)="selectItem(articulo)">Seleccionar</button>
+            <button (click)= "deleteItem(articulo.code)">Eliminar</button>
+          </td>
+        </tr>
+      </table>  
+
+      <div>
+        <h2>Datos del Producto</h2>
+        <form action="">
+          <label for="">Codigo</label> <br>
+          <input type="number" name="txtCodigo" [(ngModel)]="code"><br>
+          <label for="">Descripción</label> <br>
+          <input type="text" name="txtDescripcion" [(ngModel)]="description"><br>
+          <label for="">Precio</label> <br>
+          <input type="number" name="txtPrecio" [(ngModel)]="price"><br>
+        </form>
+        <button (click)="addItem()" > Guardar</button>
+      </div>
+      <hr><br>
+      <app-dado #dado1></app-dado>
+      <button (click)="dado1.lanzar()"> Lanzar</button><hr><br>
+      <app-dado #dado2></app-dado>
+      <button (click)="dado2.lanzar()"> Lanzar</button><hr><br>
+      <app-dado #dado3></app-dado>
+      <button (click)="dado3.lanzar()"> Lanzar</button><hr><br>
+      <button (click)="lanzar()"> Lanzar los 3</button>
+      <h2>{{mensage}}</h2>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
