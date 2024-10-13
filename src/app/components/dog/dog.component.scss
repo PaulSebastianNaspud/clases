@@ -1,0 +1,38 @@
+div {
+    display:  flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    width: 450px;
+    height: 300px;
+    gap: 10px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10%;
+    box-shadow: 6px 5px 5px 1px rgba(0,0,0,0.5);
+    height: 250px;
+}
+
+section > * {
+    margin: 0;
+    padding: 0;
+}
+
+
+section span {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+section p {
+    padding-left: 5px;
+}
+
+section img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+    
+}

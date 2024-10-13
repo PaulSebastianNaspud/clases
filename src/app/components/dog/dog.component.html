@@ -1,0 +1,11 @@
+<div>
+    @for (value of dogList; track $index) {
+        <section class="card-dog">
+            <img src="{{value.url}}" alt="">
+            <span>Nombre: </span>
+            <p>{{value.name}}</p>
+            <span>Raza: </span>
+            <p>{{value.race}}</p>
+        </section>
+    }
+</div>

@@ -1,0 +1,18 @@
+<section>
+    <h2>Agregar un nuevo item</h2>
+    <form class="form">
+        <div>
+            <label for=""> Codigo</label>
+            <input type="number" name="txtCode" [(ngModel)]="code">
+        </div>
+        <div>
+            <label for=""> Descripción</label>
+            <input type="text" name = "txtDescription" [(ngModel)]="description">
+        </div>
+        <div>
+            <label for=""> Precio</label>
+            <input type="number" name ="txtPrice" [(ngModel)]="price">
+        </div>
+        <button (click)="addPRoduct()">Guardar</button>
+    </form>
+</section>
