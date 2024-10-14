@@ -79,6 +79,26 @@
       <h2>{{minute}}</h2><br><hr>
       <h2>Listado de Perros desde la API</h2>
       <app-dog [dogList]="dogsList"></app-dog>
+      <br><hr>
+      <!-- SERVICE COUNTRY-->
+      <div class="card-country">
+        <div class="item-country">
+          <span style="font-weight: bold;">Nombre: </span>
+          <span>{{nameCountry}}</span>
+        </div>
+        <div class="item-country">
+          <span style="font-weight: bold;">Capital: </span>
+          <span>{{nameCapital}}</span>
+        </div>
+        <div class="item-country">
+          <span style="font-weight: bold;">Region: </span>
+          <span>{{region}}</span>
+        </div>
+        <div class="item-country" *ngFor="let country of countryBorders">
+          <span style="font-weight: bold;">Vecino: </span>
+          <span (click)="searchNewCountry(country)">{{country}}</span>
+        </div>
+      </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

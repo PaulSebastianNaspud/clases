@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class DogService {
   
-  listDogs : any  = []
+  listDogs : {name : string, race: string, url :string } []  = []
 
   constructor(private http : HttpClient) { }
   

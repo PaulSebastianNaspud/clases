@@ -1,12 +1,13 @@
-import {Component, input, OnInit, ViewChild} from '@angular/core';
+import {Component,  OnInit, ViewChild} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DadoComponent } from "./components/dado/dado.component";
 import { CronometroComponent } from "./components/cronometro/cronometro.component";
 import { FormComponent } from "./components/form/form.component";
-import { DogService } from './services/api/dog.service';
+import { DogService } from './services/api/dog/dog.service';
 import { DogComponent } from "./components/dog/dog.component";
+import { CountryService } from './services/api/country/country.service';
 
 
 @Component({
@@ -97,11 +98,17 @@ export class AppComponent  implements OnInit{
 
   /* SERVICES
      PERROS SERVICES
+     COUNTRY SERVICES
   */
   
-  dogsList = []
-
-  constructor(private dogService : DogService) {}
+  dogsList : {name : string, race: string, url :string } [] = []
+  nameCountry = "ecuador"
+  nameCapital = ""
+  region = ""
+  countryBorders=[]
+  data! : Promise<any>
+  
+  constructor(private dogService : DogService, private countryService : CountryService ) {}
 
   ngOnInit(): void {
     this.dogService.addDog("Renzo", "Beagle")
@@ -110,5 +117,23 @@ export class AppComponent  implements OnInit{
     this.dogService.addDog("Rambo", "Koker")
     this.dogService.addDog("Rambo", "Koker")
     this.dogsList = this.dogService.listDogs
+    this.searchCountry()
+    
   }
+
+  searchCountry(){
+    this.data = this.countryService.getCountry(this.nameCountry)
+    this.data.then(value => {
+      this.nameCountry = value[0]["name"]["common"]
+      this.nameCapital = value[0].capital[0]
+      this.region = value[0].region
+      this.countryBorders = value[0].borders
+      
+    })
+  }
+  searchNewCountry(name : string){
+    this.nameCountry = name
+    this.searchCountry()
+  }
+
 }
